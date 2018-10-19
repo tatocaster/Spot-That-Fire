@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Spot That Fire</string>
+    <string name="google_maps_key">AIzaSyBjZno7Ean-U0NIC3QHdjpmFIwS2SHTFZ8</string>
+    <string name="browse_wildfires">Browse Wildfires</string>
+    <string name="select_image">Select Image</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="login">Log In</string>
+</resources>

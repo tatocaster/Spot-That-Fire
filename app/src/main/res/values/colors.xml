@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC6</color>
+
+
+    <color name="errorBackground">#E22C33</color>
+    <color name="successBackground">#689F38</color>
+    <color name="infoBackground">#636C73</color>
+    <color name="white">#FFF</color>
+    <color name="black">#000</color>
+    <color name="textColor">#000</color>
+    <color name="backgroundTintDark">#CC000000</color> <!-- 80% black -->
+    <color name="backgroundTint">#4D000000</color> <!-- 30% black -->
+    <color name="backgroundTintLighter">#26000000</color> <!-- 15% black -->
+    <color name="textSecondaryDisabledLight">#66ffffff</color> <!-- 40% white -->
+
+
+    <!-- OVERWRITE THESE COLORS FOR A LIGHT THEME -->
+    <color name="material_drawer_background">#cc0c1013</color>
+    <color name="material_drawer_primary_text">@color/white</color>
+    <color name="material_drawer_divider">#8B9FB0</color>
+    <color name="material_drawer_divider_2">#668B9FB0</color>
+    <color name="material_drawer_selected">#00ffffff</color>
+    <color name="material_drawer_selected_text">@color/white</color>
+    <color name="material_drawer_header_selection_text">@color/white</color>
+
+
+    <color name="default_text_color">#000000</color>
+    <color name="secondary_text_color">#000000</color>
+</resources>
