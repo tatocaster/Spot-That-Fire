@@ -1,6 +1,6 @@
-# NASA App Challenge
+# Spot That Fire 🔥
 
-#License
+# License
 ```
 MIT License
 

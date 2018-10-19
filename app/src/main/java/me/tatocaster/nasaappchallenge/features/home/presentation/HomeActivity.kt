@@ -47,6 +47,10 @@ class HomeActivity : BaseActivity(), HomeContract.View {
         activitiesRV.setHasFixedSize(true)
         activitiesRV.adapter = adapter
 
+        fab.setOnClickListener {
+            // navigate to create activity
+        }
+
         setUpNavigationDrawer()
     }
 

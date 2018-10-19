@@ -17,7 +17,7 @@
         android:fontFamily="@font/nunito_regular"
         android:gravity="center"
         android:text="@string/browse_wildfires"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

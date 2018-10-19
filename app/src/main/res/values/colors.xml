@@ -18,7 +18,7 @@
 
 
     <!-- OVERWRITE THESE COLORS FOR A LIGHT THEME -->
-    <color name="material_drawer_background">#cc0c1013</color>
+    <color name="material_drawer_background">#CC0c1013</color>
     <color name="material_drawer_primary_text">@color/white</color>
     <color name="material_drawer_divider">#8B9FB0</color>
     <color name="material_drawer_divider_2">#668B9FB0</color>
