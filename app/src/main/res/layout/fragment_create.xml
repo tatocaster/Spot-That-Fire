@@ -8,9 +8,7 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/cameraWrapper"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="168dp"
-        tools:layout_editor_absoluteY="485dp">
+        android:layout_height="match_parent">
 
         <com.wonderkiln.camerakit.CameraView
             android:id="@+id/cameraView"
@@ -129,6 +127,7 @@
                         android:layout_height="@dimen/spacing_large" />
 
                     <LinearLayout
+                        android:id="@+id/mapsButtonWrapper"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
@@ -146,18 +145,16 @@
                             android:layout_width="@dimen/spacing_large"
                             android:layout_height="match_parent" />
 
-                        <android.support.design.widget.TextInputLayout
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/locationTextView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textColorHint="@color/grey_40">
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/spacing_large"
+                            android:fontFamily="@font/nunito_regular"
+                            android:gravity="center"
+                            android:text="@string/select_location" />
 
-                            <android.support.v7.widget.AppCompatEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/nunito_light"
-                                android:hint="@string/location" />
-
-                        </android.support.design.widget.TextInputLayout>
                     </LinearLayout>
 
                     <View
@@ -165,6 +162,7 @@
                         android:layout_height="@dimen/spacing_large" />
 
                     <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/call"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"

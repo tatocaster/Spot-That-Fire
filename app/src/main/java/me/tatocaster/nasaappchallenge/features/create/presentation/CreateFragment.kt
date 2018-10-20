@@ -1,15 +1,25 @@
 package me.tatocaster.nasaappchallenge.features.create.presentation
 
+import android.Manifest
+import android.app.Activity
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.android.gms.maps.model.LatLng
 import kotlinx.android.synthetic.main.fragment_create.view.*
+import me.tatocaster.nasaappchallenge.MAP_ACTIVITY_REQUEST_CODE
 import me.tatocaster.nasaappchallenge.R
 import me.tatocaster.nasaappchallenge.common.utils.showErrorAlert
 import me.tatocaster.nasaappchallenge.features.base.BaseFragment
 import me.tatocaster.nasaappchallenge.features.home.presentation.HomeActivity
+import me.tatocaster.nasaappchallenge.features.map.presentation.MapsActivity
 import javax.inject.Inject
+
 
 class CreateFragment : BaseFragment(), CreateContract.View {
     @Inject
@@ -42,6 +52,18 @@ class CreateFragment : BaseFragment(), CreateContract.View {
 
         root.snapPic.setOnClickListener {
             hidePreview()
+        }
+
+        root.mapsButtonWrapper.setOnClickListener {
+            val i = Intent(homeActivity, MapsActivity::class.java)
+            startActivityForResult(i, MAP_ACTIVITY_REQUEST_CODE)
+        }
+
+        root.call.setOnClickListener {
+            if (ContextCompat.checkSelfPermission(homeActivity, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+                val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:112"))
+                startActivity(intent)
+            }
         }
 
         return root
@@ -79,6 +101,22 @@ class CreateFragment : BaseFragment(), CreateContract.View {
     override fun clearImageViewToDefault() {
         root.imagePreview.setImageBitmap(null)
         root.imagePreview.setImageResource(R.drawable.ic_photo_library)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == MAP_ACTIVITY_REQUEST_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
+                val result = data!!.getBundleExtra("result")
+                val latLangFromBundle = result.getParcelable<LatLng?>("latlng")
+                latLangFromBundle?.let {
+                    root.locationTextView.text = "${it.latitude} : ${it.longitude}"
+                }
+
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                //Write your code if there's no result
+            }
+        }
     }
 
     companion object {

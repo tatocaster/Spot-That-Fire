@@ -86,6 +86,7 @@ dependencies {
     implementation 'joda-time:joda-time:2.9.9'
 
     implementation 'com.google.android.gms:play-services-maps:16.0.0'
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
     kapt 'com.github.bumptech.glide:compiler:4.6.1'
     kapt 'com.google.dagger:dagger-compiler:2.15'
     kapt 'com.google.dagger:dagger-android-processor:2.15'

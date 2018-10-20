@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <!--
@@ -38,7 +39,7 @@
         </activity>
 
         <activity
-            android:name=".features.map.MapsActivity"
+            android:name=".features.map.presentation.MapsActivity"
             android:label="@string/title_activity_maps" />
 
         <meta-data

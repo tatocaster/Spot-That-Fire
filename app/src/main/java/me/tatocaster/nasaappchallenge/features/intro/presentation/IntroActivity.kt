@@ -77,6 +77,7 @@ class IntroActivity : AppIntro2() {
         askForPermissions(arrayOf(Manifest.permission.CAMERA,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.CALL_PHONE,
                 Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.ACCESS_COARSE_LOCATION), 1)
     }
