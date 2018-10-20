@@ -91,7 +91,7 @@ dependencies {
     kapt 'com.google.dagger:dagger-android-processor:2.15'
 
     implementation 'com.google.firebase:firebase-core:16.0.4'
-    implementation 'com.google.firebase:firebase-database:16.0.3'
+    implementation 'com.google.firebase:firebase-firestore:17.1.1'
     implementation 'com.google.firebase:firebase-messaging:17.3.3'
     implementation 'com.google.firebase:firebase-auth:16.0.4'
     implementation 'com.google.firebase:firebase-storage:16.0.3'

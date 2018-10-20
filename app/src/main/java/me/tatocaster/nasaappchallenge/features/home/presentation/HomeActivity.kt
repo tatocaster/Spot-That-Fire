@@ -10,6 +10,7 @@ import me.tatocaster.nasaappchallenge.common.utils.addFragmentToActivity
 import me.tatocaster.nasaappchallenge.common.utils.showInfoAlert
 import me.tatocaster.nasaappchallenge.features.about.presentation.AboutFragment
 import me.tatocaster.nasaappchallenge.features.base.BaseActivity
+import me.tatocaster.nasaappchallenge.features.create.presentation.CreateFragment
 import timber.log.Timber
 
 
@@ -23,6 +24,7 @@ class HomeActivity : BaseActivity() {
 
         fab.setOnClickListener {
             // navigate to create activity
+            addFragmentToActivity(supportFragmentManager, CreateFragment.newInstance(), R.id.container)
         }
 
         setUpNavigationDrawer()

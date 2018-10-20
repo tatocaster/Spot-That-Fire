@@ -6,6 +6,8 @@ import me.tatocaster.nasaappchallenge.features.base.BaseActivity
 import me.tatocaster.nasaappchallenge.features.base.BaseActivityModule
 import me.tatocaster.nasaappchallenge.features.base.BaseFragment
 import me.tatocaster.nasaappchallenge.features.base.BaseFragmentModule
+import me.tatocaster.nasaappchallenge.features.create.presentation.CreateFragment
+import me.tatocaster.nasaappchallenge.features.create.presentation.CreateFragmentModule
 import me.tatocaster.nasaappchallenge.features.home.presentation.HomeActivity
 import me.tatocaster.nasaappchallenge.features.home.presentation.HomeActivityModule
 import me.tatocaster.nasaappchallenge.features.home.presentation.HomeFragment
@@ -24,4 +26,7 @@ abstract class ActivityBuilder {
 
     @ContributesAndroidInjector(modules = [BaseFragmentModule::class])
     abstract fun bindBaseFragment(): BaseFragment
+
+    @ContributesAndroidInjector(modules = [CreateFragmentModule::class])
+    abstract fun bindCreateFragment(): CreateFragment
 }

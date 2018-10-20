@@ -8,12 +8,16 @@ import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
 import com.github.paolorotolo.appintro.AppIntro2
 import com.github.paolorotolo.appintro.AppIntro2Fragment
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.iid.FirebaseInstanceId
 import me.tatocaster.nasaappchallenge.INTRO_PASSED
 import me.tatocaster.nasaappchallenge.R
+import me.tatocaster.nasaappchallenge.common.AppFirebaseMessagingService.Companion.FCM_DEVICE_ID
 import me.tatocaster.nasaappchallenge.common.utils.PreferenceHelper
 import me.tatocaster.nasaappchallenge.common.utils.PreferenceHelper.get
 import me.tatocaster.nasaappchallenge.common.utils.PreferenceHelper.set
 import me.tatocaster.nasaappchallenge.features.home.presentation.HomeActivity
+import timber.log.Timber
 
 
 class IntroActivity : AppIntro2() {
@@ -35,24 +39,30 @@ class IntroActivity : AppIntro2() {
 
         askPermissions()
 
-        /*FirebaseInstanceId.getInstance().instanceId
+        FirebaseInstanceId.getInstance().instanceId
                 .addOnCompleteListener { task ->
-                    if (!task.isSuccessful()) {
-                        Timber.e(task.getException())
-                        return@FirebaseInstanceId.getInstance().getInstanceId()
-                                .addOnCompleteListener
+                    if (!task.isSuccessful) {
+                        Timber.e(task.exception)
+                        return@addOnCompleteListener
                     }
 
                     // Get new Instance ID token
-                    val token = task.getResult().getToken()
+                    val token = task.result?.token
                     Timber.d("login activity, token %s", token)
 
-                    if (getStringPreference(FCM_DEVICE_ID).equals(token))
-                        return@FirebaseInstanceId.getInstance().getInstanceId()
-                                .addOnCompleteListener
+                    if (prefs[FCM_DEVICE_ID, ""].equals(token))
+                        return@addOnCompleteListener
 
                     prefs[FCM_DEVICE_ID] = token
-                }*/
+
+                    val db = FirebaseFirestore.getInstance()
+                    db.collection("device_ids")
+                            .add(hashMapOf(Pair("device_id", token!!)) as Map<String, Any>)
+                            .addOnSuccessListener { documentReference ->
+                                Timber.d("DocumentSnapshot added with ID: %s", documentReference.id)
+                            }
+                            .addOnFailureListener { e -> Timber.e(e) }
+                }
     }
 
     private fun addSlides() {

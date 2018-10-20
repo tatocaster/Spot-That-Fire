@@ -6,7 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.content_home.view.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
 import me.tatocaster.nasaappchallenge.R
 import me.tatocaster.nasaappchallenge.common.utils.SeparatorItemDecoration
 import me.tatocaster.nasaappchallenge.common.utils.showErrorAlert
@@ -22,7 +22,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     private lateinit var homeActivity: HomeActivity
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val root = inflater.inflate(R.layout.content_home, container, false)
+        val root = inflater.inflate(R.layout.fragment_home, container, false)
 
         homeActivity = activity as HomeActivity
 

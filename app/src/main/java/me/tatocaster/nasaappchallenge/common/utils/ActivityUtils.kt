@@ -10,5 +10,5 @@ fun AppCompatActivity.addFragmentToActivity(@NonNull fragmentManager: FragmentMa
     checkNotNull(fragmentManager)
     checkNotNull(fragment)
     val transaction = fragmentManager.beginTransaction()
-    transaction.add(frameId, fragment).addToBackStack(null).commit()
+    transaction.replace(frameId, fragment).addToBackStack(null).commit()
 }
