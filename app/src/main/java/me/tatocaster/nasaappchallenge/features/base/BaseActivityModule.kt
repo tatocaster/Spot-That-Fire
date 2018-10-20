@@ -4,3 +4,6 @@ import dagger.Module
 
 @Module
 object BaseActivityModule
+
+@Module
+object BaseFragmentModule

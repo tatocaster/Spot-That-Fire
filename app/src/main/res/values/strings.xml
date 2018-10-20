@@ -5,4 +5,9 @@
     <string name="select_image">Select Image</string>
     <string name="title_activity_maps">Map</string>
     <string name="login">Log In</string>
+    <string name="intro_1_desc">Crowdsourcing tool to spot early wildfires and save the earth</string>
+    <string name="intro_2_desc">Just snap the photo and notify surroundings about the fire</string>
+    <string name="about_description">Crowdsouricing app to detect early wildfires</string>
+    <string name="version">Version</string>
+    <string name="connect_with_us">Connect with us</string>
 </resources>

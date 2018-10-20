@@ -1,57 +1,33 @@
 package me.tatocaster.nasaappchallenge.features.home.presentation
 
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.LinearLayoutManager
 import com.mikepenz.materialdrawer.DrawerBuilder
 import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.content_home.*
 import kotlinx.android.synthetic.main.nav_header.view.*
 import me.tatocaster.nasaappchallenge.R
 import me.tatocaster.nasaappchallenge.common.utils.CustomDrawerPrimaryItem
-import me.tatocaster.nasaappchallenge.common.utils.SeparatorItemDecoration
-import me.tatocaster.nasaappchallenge.common.utils.showErrorAlert
+import me.tatocaster.nasaappchallenge.common.utils.addFragmentToActivity
 import me.tatocaster.nasaappchallenge.common.utils.showInfoAlert
-import me.tatocaster.nasaappchallenge.entity.WildFireActivity
+import me.tatocaster.nasaappchallenge.features.about.presentation.AboutFragment
 import me.tatocaster.nasaappchallenge.features.base.BaseActivity
 import timber.log.Timber
-import javax.inject.Inject
 
 
-class HomeActivity : BaseActivity(), HomeContract.View {
-
-    @Inject
-    lateinit var presenter: HomeContract.Presenter
-
-    private lateinit var adapter: WildfiresAdapter
+class HomeActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        adapter = WildfiresAdapter(this) {
-            val bundle = Bundle().apply {
-                //                putParcelable("strava_activity", it)
-            }
-            /*val intent = Intent(this, CreateActivity::class.java).apply {
-                putExtras(bundle)
-            }
-            startActivity(intent)*/
-        }
-
         setSupportActionBar(toolbar)
-
-        val layoutManager = LinearLayoutManager(this)
-        activitiesRV.addItemDecoration(SeparatorItemDecoration(this, ContextCompat.getColor(this, R.color.colorPrimaryDark), 1f))
-        activitiesRV.layoutManager = layoutManager
-        activitiesRV.setHasFixedSize(true)
-        activitiesRV.adapter = adapter
 
         fab.setOnClickListener {
             // navigate to create activity
         }
 
         setUpNavigationDrawer()
+
+        addFragmentToActivity(supportFragmentManager, HomeFragment.newInstance(), R.id.container)
     }
 
     private fun setUpNavigationDrawer() {
@@ -68,6 +44,9 @@ class HomeActivity : BaseActivity(), HomeContract.View {
                     when (drawerItem.identifier.toInt()) {
                         1 -> {
                             Timber.d("clicked item :  %s", drawerItem.identifier)
+                        }
+                        2 -> {
+                            addFragmentToActivity(supportFragmentManager, AboutFragment.newInstance(), R.id.container)
                         }
                     }
                     false
@@ -86,17 +65,11 @@ class HomeActivity : BaseActivity(), HomeContract.View {
         drawerBuilder.build()
     }
 
-    override fun onResume() {
-        super.onResume()
-
-//        presenter.getWildfires()
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount > 0)
+            supportFragmentManager.popBackStack()
+        else
+            super.onBackPressed()
     }
 
-    override fun showError(message: String) {
-        showErrorAlert(this, "", message)
-    }
-
-    override fun updateList(data: MutableList<WildFireActivity>) {
-
-    }
 }

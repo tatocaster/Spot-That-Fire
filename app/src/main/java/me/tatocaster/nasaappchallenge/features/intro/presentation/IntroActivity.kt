@@ -56,10 +56,10 @@ class IntroActivity : AppIntro2() {
     }
 
     private fun addSlides() {
-        addSlide(AppIntro2Fragment.newInstance("Spot The Fire", "Awesome Description", R.drawable.ic_launcher_background,
+        addSlide(AppIntro2Fragment.newInstance("Spot That Fire", getString(R.string.intro_1_desc), R.drawable.ic_earth,
                 ContextCompat.getColor(this, R.color.colorPrimary)))
 
-        addSlide(AppIntro2Fragment.newInstance("Spot The Fire", "Awesome Description 2", R.drawable.ic_launcher_background,
+        addSlide(AppIntro2Fragment.newInstance("Spot That Fire", getString(R.string.intro_2_desc), R.drawable.ic_fire,
                 ContextCompat.getColor(this, R.color.colorPrimary)))
     }
 
