@@ -5,6 +5,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.item_activity.view.*
 import me.tatocaster.nasaappchallenge.R
 import me.tatocaster.nasaappchallenge.entity.WildFireActivity
 import org.joda.time.format.PeriodFormatter
@@ -12,8 +14,8 @@ import org.joda.time.format.PeriodFormatterBuilder
 import java.text.SimpleDateFormat
 import java.util.*
 
-class WildfiresAdapter (private val context: Context,
-                        private val onClick: (WildFireActivity) -> Unit) : RecyclerView.Adapter<WildfiresAdapter.ActivityHolder>() {
+class WildfiresAdapter(private val context: Context,
+                       private val onClick: (WildFireActivity) -> Unit) : RecyclerView.Adapter<WildfiresAdapter.ActivityHolder>() {
     private var activityList: List<WildFireActivity> = arrayListOf()
     override fun getItemCount(): Int = activityList.size
     private val periodFormatter: PeriodFormatter = PeriodFormatterBuilder()
@@ -39,18 +41,6 @@ class WildfiresAdapter (private val context: Context,
         holder.itemView.setOnClickListener { onClick(item) }
     }
 
-    /*private fun convertToStravaActivity(activity: WildFireActivity): StravaRecordedActivity {
-        val stravaRecordedActivity = StravaRecordedActivity()
-
-        val period = Period(activity.movingTime.seconds * 1000L)
-        stravaRecordedActivity.displayTime = periodFormatter.print(period)
-        stravaRecordedActivity.name = activity.name
-        stravaRecordedActivity.distanceKm = activity.distance.meters / 1000
-        stravaRecordedActivity.elevationMeters = activity.totalElevationGain.meters
-        stravaRecordedActivity.polyLine = activity.map.summaryPolyline
-        stravaRecordedActivity.startDate = dateFormatter.format(activity.startDate)
-        return stravaRecordedActivity
-    }*/
 
     fun setActivities(activities: List<WildFireActivity>) {
         activityList = activities
@@ -59,11 +49,12 @@ class WildfiresAdapter (private val context: Context,
 
     inner class ActivityHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun render(activity: WildFireActivity) {
-            /*itemView.title.text = activity.name
-            itemView.date.text = activity.startDate
-            itemView.distance.text = "${"%.2f".format(activity.distanceKm)}km"
-            itemView.time.text = activity.displayTime
-            itemView.activityElevation.text = "${activity.elevationMeters}m"*/
+            itemView.title.text = activity.name
+            Glide.with(context)
+                    .load(activity.imageUrl)
+                    .into(itemView.imageView)
+            itemView.date.text = activity.createdAt
+            itemView.distance.text = activity.latLng
         }
     }
 }

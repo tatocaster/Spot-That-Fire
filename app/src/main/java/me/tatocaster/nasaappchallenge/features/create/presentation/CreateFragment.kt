@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
@@ -18,6 +19,8 @@ import me.tatocaster.nasaappchallenge.common.utils.showErrorAlert
 import me.tatocaster.nasaappchallenge.features.base.BaseFragment
 import me.tatocaster.nasaappchallenge.features.home.presentation.HomeActivity
 import me.tatocaster.nasaappchallenge.features.map.presentation.MapsActivity
+import org.joda.time.DateTime
+import java.util.*
 import javax.inject.Inject
 
 
@@ -28,6 +31,8 @@ class CreateFragment : BaseFragment(), CreateContract.View {
     private lateinit var homeActivity: HomeActivity
 
     private lateinit var root: View
+
+    private var imagePreviewBitmap: Bitmap? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         root = inflater.inflate(R.layout.fragment_create, container, false)
@@ -46,6 +51,7 @@ class CreateFragment : BaseFragment(), CreateContract.View {
                     showPreview()
                     root.imagePreview.setImageBitmap(cameraKitImage.bitmap)
                     root.progressBar.visibility = View.GONE
+                    imagePreviewBitmap = cameraKitImage.bitmap
                 }
             }
         }
@@ -66,11 +72,50 @@ class CreateFragment : BaseFragment(), CreateContract.View {
             }
         }
 
+        root.reportFire.setOnClickListener { btn ->
+            disableView()
+            imagePreviewBitmap?.let {
+                presenter.uploadImageToFirebase(it)
+            }
+        }
+
         return root
+    }
+
+    override fun onFireReported() {
+        enableView()
+    }
+
+    override fun onImageUploaded(uri: Uri) {
+        val data: HashMap<String, Any> = hashMapOf()
+        val juDate = Date()
+        val dt = DateTime(juDate)
+        data["created_at"] = dt.toLocalDateTime().toString()
+        data["description"] = root.descriptionInput.text.toString()
+        data["latlng"] = root.locationTextView.text.toString()
+        data["image"] = uri
+        presenter.reportFire(data)
+    }
+
+    private fun disableView() {
+        root.reportFire.isClickable = false
+        root.reportFire.isEnabled = false
+        root.descriptionInput.isEnabled = false
+        root.locationTextView.isEnabled = false
+        root.uploadProgressBar.visibility = View.VISIBLE
+    }
+
+    private fun enableView() {
+        root.reportFire.isClickable = true
+        root.reportFire.isEnabled = true
+        root.descriptionInput.isEnabled = true
+        root.locationTextView.isEnabled = true
+        root.uploadProgressBar.visibility = View.GONE
     }
 
     override fun showError(message: String) {
         showErrorAlert(homeActivity, message, getString(R.string.try_again))
+        enableView()
     }
 
     override fun onResume() {
@@ -101,6 +146,7 @@ class CreateFragment : BaseFragment(), CreateContract.View {
     override fun clearImageViewToDefault() {
         root.imagePreview.setImageBitmap(null)
         root.imagePreview.setImageResource(R.drawable.ic_photo_library)
+        imagePreviewBitmap = null
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

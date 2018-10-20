@@ -20,7 +20,7 @@ class AboutFragment : Fragment() {
                 .addItem(Element(getString(R.string.version) + " " + BuildConfig.VERSION_NAME, null))
                 .addGroup(getString(R.string.connect_with_us))
                 .addEmail("kutaliatato@gmail.com")
-                .addWebsite("https://spotthatfire.com/")
+                .addWebsite("http://spotthefire.surge.sh/")
                 .addPlayStore("me.tatocaster.spotthatfire")
                 .addGitHub("tatocaster")
                 .create()

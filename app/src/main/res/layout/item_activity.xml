@@ -5,16 +5,25 @@
     android:layout_height="wrap_content"
     android:padding="8dp">
 
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/nunito_light"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/date"
@@ -37,56 +46,8 @@
         android:gravity="center"
         android:textColor="@color/textColor"
         android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/time"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/date" />
-
-    <TextView
-        android:id="@+id/time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:fontFamily="@font/nunito_light"
-        android:gravity="center"
-        android:textColor="@color/textColor"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/elevationWrapper"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toEndOf="@+id/distance"
-        app:layout_constraintTop_toBottomOf="@+id/date" />
-
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/elevationWrapper"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toEndOf="@+id/time"
-        app:layout_constraintTop_toBottomOf="@+id/date">
-
-        <ImageView
-            android:id="@+id/terrainIcon"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            app:layout_constraintEnd_toStartOf="@+id/activityElevation"
-            app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_terrain" />
-
-        <TextView
-            android:id="@+id/activityElevation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:layout_marginLeft="2dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginRight="32dp"
-            android:gravity="center"
-            android:textColor="@color/textColor"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/terrainIcon" />
-    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

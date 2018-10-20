@@ -1,12 +1,12 @@
 package me.tatocaster.nasaappchallenge.features.home.presentation
 
-import me.tatocaster.nasaappchallenge.entity.WildFireActivity
+import com.google.firebase.firestore.DocumentSnapshot
 
 interface HomeContract {
     interface View {
         fun showError(message: String)
 
-        fun updateList(data : MutableList<WildFireActivity>)
+        fun updateList(data: MutableList<DocumentSnapshot>)
     }
 
     interface Presenter {

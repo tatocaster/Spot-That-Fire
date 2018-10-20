@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.firebase.firestore.DocumentSnapshot
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import me.tatocaster.nasaappchallenge.R
 import me.tatocaster.nasaappchallenge.common.utils.SeparatorItemDecoration
@@ -49,14 +50,25 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         showErrorAlert(homeActivity, "", message)
     }
 
-    override fun updateList(data: MutableList<WildFireActivity>) {
-        adapter.setActivities(data)
+    override fun updateList(data: MutableList<DocumentSnapshot>) {
+        val wildfires = mutableListOf<WildFireActivity>()
+
+        for (document in data) {
+            wildfires.add(WildFireActivity(
+                    document.get("description").toString(),
+                    document.get("image").toString(),
+                    document.get("location").toString(),
+                    document.get("created_at").toString()
+            ))
+        }
+
+        adapter.setActivities(wildfires)
     }
 
 
     override fun onResume() {
         super.onResume()
-//        presenter.getWildfires()
+        presenter.getWildfires()
     }
 
     override fun onDestroyView() {

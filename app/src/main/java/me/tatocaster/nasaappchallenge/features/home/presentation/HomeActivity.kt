@@ -1,7 +1,10 @@
 package me.tatocaster.nasaappchallenge.features.home.presentation
 
 import android.os.Bundle
+import android.view.View
+import com.google.firebase.auth.FirebaseAuth
 import com.mikepenz.materialdrawer.DrawerBuilder
+import com.mikepenz.materialdrawer.model.DividerDrawerItem
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.nav_header.view.*
 import me.tatocaster.nasaappchallenge.R
@@ -16,11 +19,16 @@ import timber.log.Timber
 
 class HomeActivity : BaseActivity() {
 
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
         setSupportActionBar(toolbar)
+
+
+        auth = FirebaseAuth.getInstance()
 
         fab.setOnClickListener {
             // navigate to create activity
@@ -50,12 +58,17 @@ class HomeActivity : BaseActivity() {
                         2 -> {
                             addFragmentToActivity(supportFragmentManager, AboutFragment.newInstance(), R.id.container)
                         }
+                        99 -> {
+                            addFragmentToActivity(supportFragmentManager, HomeFragment.newInstance(), R.id.container)
+                        }
                     }
                     false
                 }
 
         drawerBuilder
                 .addDrawerItems(
+                        CustomDrawerPrimaryItem.newPrimaryItem(this, 99, "Home").withHiddenDivider(),
+                        DividerDrawerItem(),
                         CustomDrawerPrimaryItem.newPrimaryItem(this, 1, "Help"),
                         CustomDrawerPrimaryItem.newPrimaryItem(this, 2, "About Us").withHiddenDivider()
                 )
@@ -67,11 +80,29 @@ class HomeActivity : BaseActivity() {
         drawerBuilder.build()
     }
 
+    override fun onStart() {
+        super.onStart()
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+        } else {
+            auth.signInAnonymously()
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            val user = auth.currentUser
+                        } else {
+                        }
+                    }
+        }
+    }
+
     override fun onBackPressed() {
-        if (supportFragmentManager.backStackEntryCount > 0)
-            supportFragmentManager.popBackStack()
-        else
-            super.onBackPressed()
+        when {
+            supportFragmentManager.backStackEntryCount != 1 -> {
+                supportFragmentManager.popBackStack()
+                fab.visibility = View.GONE
+            }
+            else -> super.onBackPressed()
+        }
     }
 
 }

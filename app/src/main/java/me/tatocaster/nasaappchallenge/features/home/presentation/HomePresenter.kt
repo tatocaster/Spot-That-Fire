@@ -1,27 +1,25 @@
 package me.tatocaster.nasaappchallenge.features.home.presentation
 
-import io.reactivex.subscribers.ResourceSubscriber
-import me.tatocaster.nasaappchallenge.entity.WildFireActivity
+import com.google.firebase.firestore.FirebaseFirestore
 import me.tatocaster.nasaappchallenge.features.home.usecase.HomeUseCase
 import javax.inject.Inject
+
 
 class HomePresenter @Inject constructor(private var useCase: HomeUseCase,
                                         private var view: HomeContract.View) : HomeContract.Presenter {
     override fun getWildfires() {
-        val subscriber = object : ResourceSubscriber<MutableList<WildFireActivity>>() {
-            override fun onNext(t: MutableList<WildFireActivity>) {
-                view.updateList(t)
-            }
-
-            override fun onError(t: Throwable) {
-                view.showError(t.message!!)
-            }
-
-            override fun onComplete() {
-
-            }
-        }
-        useCase.execute("", subscriber)
+        val db = FirebaseFirestore.getInstance()
+        db.collection("posts")
+                .get()
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+//                        for (document in task.result!!) {
+                        view.updateList(task.result!!.documents)
+//                        }
+                    } else {
+                        view.showError("Error!")
+                    }
+                }
     }
 
     override fun detach() {

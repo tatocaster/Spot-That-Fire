@@ -113,6 +113,7 @@
                             android:textColorHint="@color/grey_40">
 
                             <android.support.v7.widget.AppCompatEditText
+                                android:id="@+id/descriptionInput"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/nunito_light"
@@ -185,6 +186,31 @@
                         android:textColor="@color/deep_orange_900"
                         android:textStyle="bold" />
                 </LinearLayout>
+
+                <android.support.design.button.MaterialButton
+                    android:id="@+id/reportFire"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="@dimen/spacing_mxlarge"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:background="@color/deep_orange_A700"
+                    android:fontFamily="@font/nunito_regular"
+                    android:padding="@dimen/spacing_middle"
+                    android:text="@string/report_fire"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/bigger_text_size_14sp"
+                    android:textStyle="bold"
+                    app:layout_anchorGravity="bottom|center_horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <ProgressBar
+                    android:id="@+id/uploadProgressBar"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:visibility="gone" />
 
             </LinearLayout>
 
