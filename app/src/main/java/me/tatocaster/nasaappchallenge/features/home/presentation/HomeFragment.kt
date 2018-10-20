@@ -21,9 +21,10 @@ class HomeFragment : BaseFragment(), HomeContract.View {
 
     private lateinit var adapter: WildfiresAdapter
     private lateinit var homeActivity: HomeActivity
+    private lateinit var root: View
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
+        root = inflater.inflate(R.layout.fragment_home, container, false)
 
         homeActivity = activity as HomeActivity
 
@@ -51,14 +52,19 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     }
 
     override fun updateList(data: MutableList<DocumentSnapshot>) {
+        root.progressBar.visibility = View.GONE
+        root.activitiesRV.visibility = View.VISIBLE
+
         val wildfires = mutableListOf<WildFireActivity>()
 
         for (document in data) {
             wildfires.add(WildFireActivity(
-                    document.get("description").toString(),
-                    document.get("image").toString(),
-                    document.get("location").toString(),
-                    document.get("created_at").toString()
+                    document.getString("description"),
+                    document.getString("image"),
+                    document.getDouble("lat"),
+                    document.getDouble("lng"),
+                    document.getString("created_at"),
+                    document.getString("weather")
             ))
         }
 

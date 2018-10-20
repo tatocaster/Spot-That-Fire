@@ -43,9 +43,9 @@ class CreatePresenter @Inject constructor(private var useCase: CreateUseCase,
             return@Continuation storageReference.downloadUrl
         }).addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                view.onImageUploaded(task.result!!)
+                view.onImageUploaded(task.result)
             } else {
-                view.showError("Failed to upload")
+                view.onImageUploadFailed()
             }
         }
     }

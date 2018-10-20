@@ -54,3 +54,5 @@
 -keepclassmembers class me.tatocaster.nasaappchallenge.entity.** {
   *;
 }
+
+-keep class com.synnapps.carouselview.** { *; }

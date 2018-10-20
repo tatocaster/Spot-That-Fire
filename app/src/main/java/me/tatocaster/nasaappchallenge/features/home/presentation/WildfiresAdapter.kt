@@ -9,26 +9,12 @@ import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_activity.view.*
 import me.tatocaster.nasaappchallenge.R
 import me.tatocaster.nasaappchallenge.entity.WildFireActivity
-import org.joda.time.format.PeriodFormatter
-import org.joda.time.format.PeriodFormatterBuilder
-import java.text.SimpleDateFormat
-import java.util.*
+
 
 class WildfiresAdapter(private val context: Context,
                        private val onClick: (WildFireActivity) -> Unit) : RecyclerView.Adapter<WildfiresAdapter.ActivityHolder>() {
     private var activityList: List<WildFireActivity> = arrayListOf()
     override fun getItemCount(): Int = activityList.size
-    private val periodFormatter: PeriodFormatter = PeriodFormatterBuilder()
-            .appendHours()
-            .appendSeparator(":")
-            .appendMinutes()
-            .printZeroAlways()
-            .minimumPrintedDigits(2)
-            .appendSeparator(":")
-            .appendSeconds()
-            .minimumPrintedDigits(2)
-            .toFormatter()
-    private val dateFormatter = SimpleDateFormat("EEEE dd MMMM yyyy", Locale.getDefault())
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActivityHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_activity, parent, false)
@@ -49,12 +35,22 @@ class WildfiresAdapter(private val context: Context,
 
     inner class ActivityHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun render(activity: WildFireActivity) {
+            val imageUrls = arrayOf(
+                    "https://maps.googleapis.com/maps/api/staticmap?center=${activity.lat},${activity.lng}&zoom=13&size=600x300&markers=${activity.lat},${activity.lng}" +
+                            "&key=AIzaSyCvTITAJSKdDr-rKJk5grdu4WpFcdzNy90",
+                    activity.imageUrl)
+
             itemView.title.text = activity.name
-            Glide.with(context)
-                    .load(activity.imageUrl)
-                    .into(itemView.imageView)
+
             itemView.date.text = activity.createdAt
-            itemView.distance.text = activity.latLng
+
+            itemView.carouselView.pageCount = 2
+            itemView.carouselView.setImageListener { position, imageView ->
+                Glide.with(context)
+                        .load(imageUrls[position])
+                        .into(imageView)
+            }
+            itemView.distance.text = activity.weather
         }
     }
 }

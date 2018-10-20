@@ -11,7 +11,9 @@ interface CreateContract {
 
         fun onFireReported()
 
-        fun onImageUploaded(uri: Uri)
+        fun onImageUploaded(uri: Uri?)
+
+        fun onImageUploadFailed()
     }
 
     interface Presenter {

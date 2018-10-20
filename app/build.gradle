@@ -110,6 +110,8 @@ dependencies {
 
     implementation 'com.android.support:multidex:1.0.3'
 
+    implementation 'com.synnapps:carouselview:0.1.5'
+
     implementation('com.mikepenz:materialdrawer:6.0.9@aar') {
         transitive = true
     }
