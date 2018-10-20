@@ -1,5 +1,9 @@
 # Spot That Fire 🔥
 
+
+<img src="https://raw.githubusercontent.com/tatocaster/Spot-That-Fire/master/art/1.png" alt="All in one" width="300">
+<img src="https://raw.githubusercontent.com/tatocaster/Spot-That-Fire/master/art/2.png" alt="All in one" width="300">
+
 Over the past year, we have witnessed long and arduous battles against record-breaking wildfires across the world. Some of these fires burned thousands of acres of land and destroyed hundreds of homes and buildings. Additionally, smoke from the fire creates issues related to poor air quality, raising health concerns for people not just in the vicinity of the fire, but at distances hundreds of miles away.
 
 `SpotThatFire` application solves the problem using `crowdsourcing` power.
@@ -35,6 +39,9 @@ Current MVP is for the demo purpose. According to the features described above, 
 - MVP arch
 - Retrofit
 - Many other 3rd party apps.
+
+<img src="https://raw.githubusercontent.com/tatocaster/Spot-That-Fire/master/art/3.png" alt="All in one" width="300">
+<img src="https://raw.githubusercontent.com/tatocaster/Spot-That-Fire/master/art/4.png" alt="All in one" width="300">
 
 
 # License
