@@ -76,7 +76,9 @@ class IntroActivity : AppIntro2() {
     private fun askPermissions() {
         askForPermissions(arrayOf(Manifest.permission.CAMERA,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.READ_EXTERNAL_STORAGE), 1)
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION), 1)
     }
 
     override fun onDonePressed(currentFragment: Fragment) {

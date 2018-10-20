@@ -10,4 +10,9 @@
     <string name="about_description">Crowdsouricing app to detect early wildfires</string>
     <string name="version">Version</string>
     <string name="connect_with_us">Connect with us</string>
+    <string name="description">Description</string>
+    <string name="location">Location</string>
+    <string name="fire_report_alert_2">Listen for emergency information and alerts, Leave if told to do so!   use N95 masks to keep particles out of the air you breathe</string>
+    <string name="fire_report_alert_1">call 112!</string>
+    <string name="try_again">Try Again!</string>
 </resources>

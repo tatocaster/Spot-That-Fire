@@ -42,7 +42,7 @@
             android:layout_gravity="bottom|end"
             android:layout_margin="32dp"
             android:background="@color/colorAccent"
-            app:srcCompat="@drawable/icon_plus_white" />
+            android:src="@drawable/ic_fire" />
 
     </android.support.design.widget.CoordinatorLayout>
 
