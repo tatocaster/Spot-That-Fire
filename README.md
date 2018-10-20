@@ -1,5 +1,42 @@
 # Spot That Fire 🔥
 
+Over the past year, we have witnessed long and arduous battles against record-breaking wildfires across the world. Some of these fires burned thousands of acres of land and destroyed hundreds of homes and buildings. Additionally, smoke from the fire creates issues related to poor air quality, raising health concerns for people not just in the vicinity of the fire, but at distances hundreds of miles away.
+
+`SpotThatFire` application solves the problem using `crowdsourcing` power.
+
+### What is SpotThatFire?
+- Crowdsourcing platform to detect early wildfires and not only wildfires any natural disaster(coming soon!)
+- Combines NASA open data + connections with government = ultimate tool
+- Strong ML to detect possible areas before the fire season, generating heat map and reports
+- Notify locals in the area with instructions
+
+### How it works?
+SpotThatFire offers mobile apps + web app and only a click you will be able to report a fire. Trained machine learning models filtering photos and allow only photos which fire and smokes to prevent spam. The operation is working on device + on the cloud. Application feed shows a distance between the user and the incident spot.
+OpenWeatherApi will automatically be fetched for every report and will give more information to every user. From the application, a user can call emergency and get first aid information during the hazard. App also will offer offline sync in near future.
+
+### Domain of the platform
+`SpotThatFire` is intended for media rooms, individual users and government to track every little change in the region. Although this application can be used worldwide, the country of Georgia is the first place to push MVP.
+Even crowdsourcing platforms need an income to survive, so monetization side of the platform can be spread in several fields:
+- Media rooms
+- Data mining (heatmaps, reports, predictions)
+
+Interested media rooms can subscribe to the service and get information about early incidents 10-15 minutes earlier which will give them the spotlight.
+
+Using data mining, the platform could give a useful database of past records, generate heatmaps, generate reports and aggregate data.
+
+### Future
+Current MVP is for the demo purpose. According to the features described above, SpotThatFire has an opportunity to evolve with useful features.
+
+### How we built it
+- The application is 100% on mBaaS - Firebase Auth, Firebase Storage, Firebase ML Kit, Firebase Firestore, Firebase Cloud Messaging, Firebase Cloud Functions
+- Google Play Services
+- Kotlin
+- RxJava
+- MVP arch
+- Retrofit
+- Many other 3rd party apps.
+
+
 # License
 ```
 MIT License
