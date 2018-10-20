@@ -90,6 +90,7 @@ class CreateFragment : BaseFragment(), CreateContract.View {
 
     override fun onFireReported() {
         enableView()
+        homeActivity.navigateToHome()
     }
 
     override fun onImageUploaded(uri: Uri?) {

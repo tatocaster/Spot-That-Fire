@@ -79,6 +79,10 @@ class HomeActivity : BaseActivity() {
         addFragmentToActivity(supportFragmentManager, CreateFragment.newInstance(), R.id.container)
     }
 
+    fun navigateToHome(){
+        addFragmentToActivity(supportFragmentManager, HomeFragment.newInstance(), R.id.container)
+    }
+
     override fun onStart() {
         super.onStart()
         val currentUser = auth.currentUser
