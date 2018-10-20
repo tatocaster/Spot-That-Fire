@@ -44,6 +44,11 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         root.activitiesRV.setHasFixedSize(true)
         root.activitiesRV.adapter = adapter
 
+        root.fab.setOnClickListener {
+            // navigate to create activity
+            homeActivity.navigateToCreateFragment()
+        }
+
         return root
     }
 

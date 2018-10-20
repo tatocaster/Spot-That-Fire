@@ -11,6 +11,7 @@ import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import com.google.android.gms.maps.model.LatLng
 import kotlinx.android.synthetic.main.fragment_create.view.*
 import me.tatocaster.nasaappchallenge.MAP_ACTIVITY_REQUEST_CODE
@@ -153,6 +154,10 @@ class CreateFragment : BaseFragment(), CreateContract.View {
     private fun hidePreview() {
         root.layoutWrapper.visibility = View.GONE
         root.cameraWrapper.visibility = View.VISIBLE
+
+        val imm = activity?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view?.windowToken, 0)
+
     }
 
     override fun clearImageViewToDefault() {

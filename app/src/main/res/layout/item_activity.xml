@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:pageColor="#00000000"
         app:radius="6dp"
-        app:slideInterval="3000"
+        app:slideInterval="10000"
         app:strokeColor="#FF777777"
         app:strokeWidth="1dp" />
 

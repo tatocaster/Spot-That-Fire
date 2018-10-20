@@ -1,7 +1,6 @@
 package me.tatocaster.nasaappchallenge.features.home.presentation
 
 import android.os.Bundle
-import android.view.View
 import com.google.firebase.auth.FirebaseAuth
 import com.mikepenz.materialdrawer.DrawerBuilder
 import com.mikepenz.materialdrawer.model.DividerDrawerItem
@@ -30,10 +29,6 @@ class HomeActivity : BaseActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        fab.setOnClickListener {
-            // navigate to create activity
-            addFragmentToActivity(supportFragmentManager, CreateFragment.newInstance(), R.id.container)
-        }
 
         setUpNavigationDrawer()
 
@@ -80,6 +75,10 @@ class HomeActivity : BaseActivity() {
         drawerBuilder.build()
     }
 
+    fun navigateToCreateFragment(){
+        addFragmentToActivity(supportFragmentManager, CreateFragment.newInstance(), R.id.container)
+    }
+
     override fun onStart() {
         super.onStart()
         val currentUser = auth.currentUser
@@ -99,7 +98,6 @@ class HomeActivity : BaseActivity() {
         when {
             supportFragmentManager.backStackEntryCount != 1 -> {
                 supportFragmentManager.popBackStack()
-                fab.visibility = View.GONE
             }
             else -> super.onBackPressed()
         }
