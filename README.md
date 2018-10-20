@@ -1,18 +1,22 @@
 # Spot That Fire 🔥
 
-
 <img src="https://raw.githubusercontent.com/tatocaster/Spot-That-Fire/master/art/1.png" alt="All in one" width="300">
 <img src="https://raw.githubusercontent.com/tatocaster/Spot-That-Fire/master/art/2.png" alt="All in one" width="300">
 
+
+[Visit app website](http://spotthefire.surge.sh/)
+
+
 Over the past year, we have witnessed long and arduous battles against record-breaking wildfires across the world. Some of these fires burned thousands of acres of land and destroyed hundreds of homes and buildings. Additionally, smoke from the fire creates issues related to poor air quality, raising health concerns for people not just in the vicinity of the fire, but at distances hundreds of miles away.
 
-`SpotThatFire` application solves the problem using `crowdsourcing` power.
+`SpotThatFire` application solves the problem using `crowdsourcing` power. Individual citizens who care about nature will contribute and benefit from the system. The application will provide a point-based system for registered users which will give extra enthusiasm.
 
 ### What is SpotThatFire?
 - Crowdsourcing platform to detect early wildfires and not only wildfires any natural disaster(coming soon!)
 - Combines NASA open data + connections with government = ultimate tool
 - Strong ML to detect possible areas before the fire season, generating heat map and reports
 - Notify locals in the area with instructions
+- Point based system, each user can achieve "the most caring" title
 
 ### How it works?
 SpotThatFire offers mobile apps + web app and only a click you will be able to report a fire. Trained machine learning models filtering photos and allow only photos which fire and smokes to prevent spam. The operation is working on device + on the cloud. Application feed shows a distance between the user and the incident spot.
