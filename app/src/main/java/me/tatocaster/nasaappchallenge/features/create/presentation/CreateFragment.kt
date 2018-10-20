@@ -20,7 +20,6 @@ import me.tatocaster.nasaappchallenge.common.utils.showErrorAlert
 import me.tatocaster.nasaappchallenge.features.base.BaseFragment
 import me.tatocaster.nasaappchallenge.features.home.presentation.HomeActivity
 import me.tatocaster.nasaappchallenge.features.map.presentation.MapsActivity
-import org.joda.time.DateTime
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
@@ -96,9 +95,8 @@ class CreateFragment : BaseFragment(), CreateContract.View {
     override fun onImageUploaded(uri: Uri?) {
         val data: HashMap<String, Any> = hashMapOf()
         val juDate = Date()
-        val dt = DateTime(juDate)
-        val dateFormatter = SimpleDateFormat("EEEE dd MMMM yyyy", Locale.getDefault())
-        data["created_at"] = dateFormatter.format(dt.toLocalDateTime().toString())
+        val dateFormatter = SimpleDateFormat("EEEE dd MMMM yyyy HH:mm", Locale.getDefault())
+        data["created_at"] = dateFormatter.format(juDate)
         data["description"] = root.descriptionInput.text.toString()
 
         if (root.locationTextView.text != null) {
@@ -107,7 +105,7 @@ class CreateFragment : BaseFragment(), CreateContract.View {
         }
 
         if (uri != null)
-            data["image"] = uri
+            data["image"] = uri.toString()
         presenter.reportFire(data)
     }
 

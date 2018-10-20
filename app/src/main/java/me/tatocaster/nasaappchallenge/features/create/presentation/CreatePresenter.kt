@@ -40,7 +40,7 @@ class CreatePresenter @Inject constructor(private var useCase: CreateUseCase,
                     throw it
                 }
             }
-            return@Continuation storageReference.downloadUrl
+            return@Continuation imagesRef.downloadUrl
         }).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 view.onImageUploaded(task.result)
