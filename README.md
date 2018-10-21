@@ -9,6 +9,9 @@
 [Visit app website](http://spotthefire.surge.sh/)
 
 
+[Visit web repo](https://github.com/mrtunii/Spot-The-Fire)
+
+
 Over the past year, we have witnessed long and arduous battles against record-breaking wildfires across the world. Some of these fires burned thousands of acres of land and destroyed hundreds of homes and buildings. Additionally, smoke from the fire creates issues related to poor air quality, raising health concerns for people not just in the vicinity of the fire, but at distances hundreds of miles away.
 
 `SpotThatFire` application solves the problem using `crowdsourcing` power. Individual citizens who care about nature will contribute and benefit from the system. The application will provide a point-based system for registered users which will give extra enthusiasm.
