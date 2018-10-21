@@ -1,6 +1,8 @@
 # Spot That Fire 🔥
 
-<img src="https://raw.githubusercontent.com/tatocaster/Spot-That-Fire/master/art/1.png" alt="All in one" width="300">
+[Download now from Play Store!](https://play.google.com/store/apps/details?id=me.tatocaster.nasaappchallenge)
+
+
 <img src="https://raw.githubusercontent.com/tatocaster/Spot-That-Fire/master/art/2.png" alt="All in one" width="300">
 
 
