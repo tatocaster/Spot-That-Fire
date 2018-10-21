@@ -79,10 +79,14 @@ class CreatePresenter @Inject constructor(private var useCase: CreateUseCase,
         detector.detectInImage(image)
                 .addOnSuccessListener {
                     // Task completed successfully
-                    val filteredData = it.filter {
-                        it.label.toLowerCase() == "fire" || it.label.toLowerCase() == "smoke"
+
+                    var fireExists = false
+                    for(item in it){
+                        if(item.label.toLowerCase() == "fire" || item.label.toLowerCase() == "smoke" || item.label.toLowerCase() == "flame"){
+                            fireExists = true
+                        }
                     }
-                    if (filteredData.isEmpty()) {
+                    if (!fireExists) {
                         view.showError("Image does not contain any fire!")
                         view.clearImageViewToDefault()
                     }
@@ -105,10 +109,13 @@ class CreatePresenter @Inject constructor(private var useCase: CreateUseCase,
         detector.detectInImage(image)
                 .addOnSuccessListener {
                     // Task completed successfully
-                    val filteredData = it.filter {
-                        it.label.toLowerCase() == "fire" || it.label.toLowerCase() == "smoke"
+                    var fireExists = false
+                    for(item in it){
+                        if(item.label.toLowerCase() == "fire" || item.label.toLowerCase() == "smoke" || item.label.toLowerCase() == "flame"){
+                            fireExists = true
+                        }
                     }
-                    if (filteredData.isEmpty()) {
+                    if (!fireExists) {
                         view.showError("Image does not contain any fire!")
                         view.clearImageViewToDefault()
                     }
